@@ -31,7 +31,7 @@ class SQLiteRepository(Repository):
             '   PRIMARY KEY (problem_id, recommendation_id),'
             '   FOREIGN KEY (problem_id)'
             '       REFERENCES problem (problem_id)'
-            '           ON DELETE CASCADE ON UPDATE CASCADE'
+            '           ON DELETE CASCADE ON UPDATE CASCADE,'
             '   FOREIGN KEY (recommendation_id)'
             '       REFERENCES recommendation (recommendation_id)'
             '           ON DELETE CASCADE ON UPDATE CASCADE)'

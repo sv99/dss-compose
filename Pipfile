@@ -11,6 +11,9 @@ flask-restplus = "*"
 uwsgi = "*"
 elasticsearch = "*"
 werkzeug = "==0.16.0"
+migrate = "*"
+mysql-connector-python = "*"
+click = "*"
 
 [requires]
 python_version = "3.7"

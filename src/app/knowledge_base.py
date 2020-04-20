@@ -8,7 +8,7 @@ class KnowledgeBase:
         self.search_engine: SearchEngine = search_engine
         self.config = config
 
-        self.init_storage()
+        # self.init_storage()
 
     def init_storage(self):
         if self.repository.is_db_empty():

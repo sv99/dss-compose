@@ -2,10 +2,11 @@ from flask import Flask
 from flask_restplus import Api
 from .knowledge_base import KnowledgeBase
 
-from src.app.repository.sqlite_repository import SQLiteRepository
-from src.app.search_engine.elastic_search_engine import ElasticsearchEngine
+from .repository import SQLiteRepository, MySQLRepository
+from .search_engine.elastic_search_engine import ElasticsearchEngine
 from src.config import Config
-
+from ..db_migrate import Migrate
+from ..cmd import add_db_command, register_elastic_command
 
 app = Flask(__name__)
 api = Api(app, title='Decision Support System',
@@ -14,9 +15,14 @@ api = Api(app, title='Decision Support System',
 ns = api.namespace('DSS', description='Get your recommendations or enrich system knowledge-base')
 
 config = Config()
-repository = SQLiteRepository(config)
-search_engine = ElasticsearchEngine(config)
+migrate = Migrate(config)
 
+# repository = SQLiteRepository(config)
+repository = MySQLRepository(config)
+search_engine = ElasticsearchEngine(config)
 kb = KnowledgeBase(repository, search_engine, config)
+
+app.cli.add_command(add_db_command(migrate))
+register_elastic_command(app, kb)
 
 from src.app import routes

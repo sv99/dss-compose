@@ -6,5 +6,6 @@
 __pycache__/
 *.py[cod]
 
+node_modules/
 venv/
 dbdata/

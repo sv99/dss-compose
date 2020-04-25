@@ -60,3 +60,25 @@ docker-compose up
 ./app_flask_cmd.sh db migrate
 ./app_flask_cmd.sh elastic-refresh
 ```
+
+## API E2E test with Cypress
+
+Install node
+
+```bash
+yarn install
+# or
+npm install
+```
+
+Start application
+```bash
+docker-compose up
+```
+
+Run cypress test
+```bash
+yarn cypress
+# or
+npm run cypress
+```

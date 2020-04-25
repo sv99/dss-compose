@@ -79,7 +79,8 @@ class MySQLRepository(Repository):
         with closing(self.connect()) as conn:
             with closing(conn.cursor()) as cursor:
                 query = 'SELECT problem_id, description FROM problem'
-                problems = cursor.execute(query).fetchall()
+                cursor.execute(query)
+                problems = cursor.fetchall()
 
         return problems
 
